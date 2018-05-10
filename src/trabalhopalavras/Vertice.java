@@ -19,6 +19,7 @@ public class Vertice{
     private int finalTmpDesc;
     private Cor cor;
     private List<Vertice> adjacentes;
+    private Vertice predecessor;
 
     public String getNome() {
         return nome;
