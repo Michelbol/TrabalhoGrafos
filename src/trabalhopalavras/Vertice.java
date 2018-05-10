@@ -14,6 +14,7 @@ public class Vertice{
     private int low;
     private int initTmpDesc;
     private int finalTmpDesc;
+    private Cor cor;
 
     public String getNome() {
         return nome;
