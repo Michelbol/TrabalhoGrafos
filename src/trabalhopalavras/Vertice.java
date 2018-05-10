@@ -13,12 +13,12 @@ import java.util.List;
  */
 public class Vertice{
     private String nome;
+    private Vertice predecessor;
     private int low;
     private int initTmpDesc;
     private int finalTmpDesc;
     private Cor cor;
     private List<Vertice> adjacentes;
-    private Vertice predecessor;
 
     public String getNome() {
         return nome;
@@ -69,4 +69,17 @@ public class Vertice{
     }
 
 
+    public Vertice() {
+        this.cor = Cor.Branco;
     }
+
+    public Vertice getPredecessor() {
+        return predecessor;
+    }
+
+    public void setPredecessor(Vertice predecessor) {
+        this.predecessor = predecessor;
+    }
+    
+    
+}

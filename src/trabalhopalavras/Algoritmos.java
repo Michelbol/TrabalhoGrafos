@@ -45,7 +45,15 @@ public class Algoritmos {
         return true;
     }
     public boolean isPonte(int tempo, Vertice v){
-        tempo = (tempo > 0) ? tempo++ : 0; 
+        tempo += 1;
+        v.setCor(Cor.Cinza);
+        v.setLow(v.getInitTmpDesc() > tempo ? tempo : v.getInitTmpDesc());
+        for(Vertice verticeAdjacente: v.getAdjacentes()){
+            if(verticeAdjacente.getCor() == Cor.Branco){
+                verticeAdjacente.setPredecessor(v); 
+            }
+        }
+        
         return true;
     }
 }
