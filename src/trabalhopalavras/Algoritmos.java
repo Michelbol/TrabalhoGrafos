@@ -30,7 +30,16 @@ public class Algoritmos {
     
     public boolean isPontoArticulacao(Vertice u, int tempo){
         tempo += 1;
+        u.setCor(Cor.Cinza);
+        u.setLow(tempo);
+        u.setInitTmpDesc(tempo);
         
+        for (Vertice v : u.getAdjacentes()){
+            if (v.getCor().equals(Cor.Branco)){
+                v.setPredecessor(u);
+                isPontoArticulacao(v,tempo);
+            }
+        }
         
         
         return true;

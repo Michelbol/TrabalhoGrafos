@@ -67,6 +67,6 @@ public class Vertice{
     public void setAdjacentes(List<Vertice> adjacentes) {
         this.adjacentes = adjacentes;
     }
-    
-    
-}
+
+
+    }
