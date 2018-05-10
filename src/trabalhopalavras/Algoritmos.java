@@ -47,13 +47,25 @@ public class Algoritmos {
     public boolean isPonte(int tempo, Vertice v){
         tempo += 1;
         v.setCor(Cor.Cinza);
-        v.setLow(v.getInitTmpDesc() > tempo ? tempo : v.getInitTmpDesc());
+        v.setInitTmpDesc(tempo);
+        v.setLow(v.getInitTmpDesc());
         for(Vertice verticeAdjacente: v.getAdjacentes()){
             if(verticeAdjacente.getCor() == Cor.Branco){
                 verticeAdjacente.setPredecessor(v); 
+                isPonte(tempo, verticeAdjacente);
+                v.setLow(Integer.min(v.getLow(), verticeAdjacente.getLow()));
+                if(verticeAdjacente.getLow() > v.getInitTmpDesc()){
+                    return true;
+                }else{
+                    if((verticeAdjacente != v.getPredecessor()) && (verticeAdjacente.getInitTmpDesc() < v.getInitTmpDesc())){
+                       v.setLow(Integer.min(v.getLow(), verticeAdjacente.getInitTmpDesc()));
+                    }
+                }
             }
         }
-        
-        return true;
+        v.setCor(Cor.Preto);
+        tempo += 1;
+        v.setFinalTmpDesc(tempo);
+        return false;
     }
 }
