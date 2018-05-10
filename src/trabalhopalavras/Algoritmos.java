@@ -15,7 +15,8 @@ import java.util.List;
 public class Algoritmos {
     
     
-    public boolean identificaCompConexos(){
+    public boolean identificaCompConexos(Grafo g){
+        g.setAllVerticeBranco();
         return true;
     }
     

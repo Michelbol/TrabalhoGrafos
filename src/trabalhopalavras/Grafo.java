@@ -33,4 +33,10 @@ public class Grafo{
     public int distanciaEntreVertices(Vertice v1, Vertice v2){
         return 999;
     }
+    
+    public void setAllVerticeBranco(){
+        for(Vertice v: this.vertice){
+            v.setCor(Cor.Branco);
+        }
+    }
 }
