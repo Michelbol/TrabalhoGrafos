@@ -5,6 +5,8 @@
  */
 package trabalhopalavras;
 
+import java.util.List;
+
 /**
  *
  * @author miche
@@ -15,6 +17,7 @@ public class Vertice{
     private int initTmpDesc;
     private int finalTmpDesc;
     private Cor cor;
+    private List<Vertice> adjacentes;
 
     public String getNome() {
         return nome;
