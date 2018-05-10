@@ -5,27 +5,46 @@
  */
 package trabalhopalavras;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.geom.Rectangle2D;
-import javax.swing.JPanel;
-
 /**
  *
  * @author miche
  */
-public class Vertice extends JPanel {
+public class Vertice{
     private String nome;
     private int low;
     private int initTmpDesc;
     private int finalTmpDesc;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getLow() {
+        return low;
+    }
+
+    public void setLow(int low) {
+        this.low = low;
+    }
+
+    public int getInitTmpDesc() {
+        return initTmpDesc;
+    }
+
+    public void setInitTmpDesc(int initTmpDesc) {
+        this.initTmpDesc = initTmpDesc;
+    }
+
+    public int getFinalTmpDesc() {
+        return finalTmpDesc;
+    }
+
+    public void setFinalTmpDesc(int finalTmpDesc) {
+        this.finalTmpDesc = finalTmpDesc;
+    }
     
-    @Override
-	protected void paintComponent(Graphics g){
-	  	super.paintComponent(g);
-	  	Graphics2D g2 = (Graphics2D) g.create();
-                g2.drawOval(100, 100, 100, 100);
-                g2.fillOval(0, 0, 0, 0);
-	}
 }

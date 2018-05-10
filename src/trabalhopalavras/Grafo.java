@@ -6,15 +6,29 @@
 package trabalhopalavras;
 
 import java.util.List;
-
 /**
  *
  * @author miche
  */
-public class Grafo {
+public class Grafo{
     private List<Aresta> aresta;
     private List<Vertice> vertice;
-    
+
+    public List<Aresta> getAresta() {
+        return aresta;
+    }
+
+    public void setAresta(List<Aresta> aresta) {
+        this.aresta = aresta;
+    }
+
+    public List<Vertice> getVertice() {
+        return vertice;
+    }
+
+    public void setVertice(List<Vertice> vertice) {
+        this.vertice = vertice;
+    }
     
     public int distanciaEntreVertices(Vertice v1, Vertice v2){
         return 999;
