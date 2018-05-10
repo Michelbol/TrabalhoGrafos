@@ -38,12 +38,27 @@ public class Algoritmos {
             if (v.getCor().equals(Cor.Branco)){
                 v.setPredecessor(u);
                 isPontoArticulacao(v,tempo);
+                if (u.getPredecessor()==null){
+                    if(isSegundoFilho(u,v)) return true;
+                } else {
+                    u.setLow(Integer.min(u.getLow(),v.getLow()));
+                    if (v.getLow() >= u.getInitTmpDesc()) return true;
+                }
+            } else {
+                if (v!=u.getPredecessor() && v.getInitTmpDesc() < u.getInitTmpDesc()) u.setLow(Integer.min(u.getLow(),v.getInitTmpDesc()));
             }
         }
         
-        
+        u.setCor(Cor.Preto);
+        tempo += 1;
+        u.setFinalTmpDesc(tempo);
         return true;
     }
+    
+    public boolean isSegundoFilho(Vertice u, Vertice v){
+        return u == v.getPredecessor().getPredecessor();
+    }
+    
     public boolean isPonte(int tempo, Vertice v){
         tempo += 1;
         v.setCor(Cor.Cinza);
