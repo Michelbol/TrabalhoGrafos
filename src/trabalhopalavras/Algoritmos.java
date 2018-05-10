@@ -29,7 +29,8 @@ public class Algoritmos {
     public boolean isPontoArticulacao(){
         return true;
     }
-    public boolean isPonte(){
+    public boolean isPonte(int tempo, Vertice v){
+        tempo = (tempo > 0) ? tempo++ : 0; 
         return true;
     }
 }
