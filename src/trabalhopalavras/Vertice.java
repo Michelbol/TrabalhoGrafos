@@ -50,5 +50,22 @@ public class Vertice{
     public void setFinalTmpDesc(int finalTmpDesc) {
         this.finalTmpDesc = finalTmpDesc;
     }
+
+    public Cor getCor() {
+        return cor;
+    }
+
+    public void setCor(Cor cor) {
+        this.cor = cor;
+    }
+
+    public List<Vertice> getAdjacentes() {
+        return adjacentes;
+    }
+
+    public void setAdjacentes(List<Vertice> adjacentes) {
+        this.adjacentes = adjacentes;
+    }
+    
     
 }
