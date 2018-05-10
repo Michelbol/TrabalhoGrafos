@@ -13,6 +13,8 @@ import java.util.List;
  * @author miche
  */
 public class Algoritmos {
+    
+    
     public boolean identificaCompConexos(){
         return true;
     }
@@ -26,7 +28,11 @@ public class Algoritmos {
         return vertice;
     }
     
-    public boolean isPontoArticulacao(){
+    public boolean isPontoArticulacao(Vertice u, int tempo){
+        tempo += 1;
+        
+        
+        
         return true;
     }
     public boolean isPonte(int tempo, Vertice v){
