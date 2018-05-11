@@ -39,4 +39,9 @@ public class Grafo{
             v.setCor(Cor.Branco);
         }
     }
+    public void setAllCompConexZero(){
+        for(Vertice v: this.vertice){
+            v.setCompConex(0);
+        }
+    }
 }

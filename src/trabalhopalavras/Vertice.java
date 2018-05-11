@@ -19,6 +19,7 @@ public class Vertice{
     private int finalTmpDesc;
     private Cor cor;
     private List<Vertice> adjacentes;
+    private int compConex;
 
     public String getNome() {
         return nome;
@@ -80,6 +81,22 @@ public class Vertice{
     public void setPredecessor(Vertice predecessor) {
         this.predecessor = predecessor;
     }
+
+    public int getCompConex() {
+        return compConex;
+    }
+
+    public void setCompConex(int compConex) {
+        this.compConex = compConex;
+    }
     
-    
+    public boolean verificaAdjavence(Vertice v1, Vertice v2){
+        int verificaNome = 0;
+        for(int i = 0; i < 5; i++){
+            if(v1.getNome().indexOf(i) == v2.getNome().indexOf(i)){
+                verificaNome += 1;
+            }
+        }
+        return verificaNome == 5;
+    }
 }

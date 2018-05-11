@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package trabalhopalavras;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,8 +16,41 @@ public class Algoritmos {
     
     public boolean identificaCompConexos(Grafo g){
         g.setAllVerticeBranco();
+        int compConex = 0;
+        for(Vertice vertice : g.getVertice()){
+            if(vertice.getCor() == Cor.Branco){
+                compConex += 1;
+                buscaEmProfundidadeConex(vertice, compConex);
+            }
+        }
+        for(int i = 0; i <= compConex; i++){
+            int nroVertices = 0;
+            for(Vertice vertice : g.getVertice()){
+                if(vertice.getCompConex() == i){
+                    nroVertices += 1;
+                }
+                if(nroVertices >= 2){
+                    break;
+                }
+            }
+            if(nroVertices == 1){
+                return false;
+            }
+        }
         return true;
     }
+    
+    public void buscaEmProfundidadeConex(Vertice v, int compConex){
+        v.setCor(Cor.Cinza);
+        v.setCompConex(compConex);
+        for(Vertice vertice : v.getAdjacentes()){
+            if (vertice.getCor() == Cor.Branco){
+                buscaEmProfundidadeConex(vertice, compConex);
+            }
+        }
+        v.setCor(Cor.Preto);
+    }
+    
     
     public boolean buscaEmProfundidade(){
         return true;
