@@ -56,9 +56,24 @@ public class Algoritmos {
         return true;
     }
     
-    public List<Vertice> buscaEmLargura(){
-        List<Vertice> vertice = new ArrayList();
-        return vertice;
+    public void buscaEmLargura(Grafo g,Vertice s){
+        List<Vertice> filaVertice = new ArrayList();
+        Vertice u;
+        
+        filaVertice.add(s);
+        while (filaVertice.size()!=0){
+            u = filaVertice.remove(0);
+            
+            for (Vertice v : u.getAdjacentes()){
+                if (v.getCor().equals(Cor.Branco)){
+                    v.setCor(Cor.Cinza);
+                    v.setDistancia(u.getDistancia() + 1);
+                    v.setPredecessor(u);
+                    filaVertice.add(v);
+                }
+            }
+            u.setCor(Cor.Preto);
+        }
     }
     
     public boolean isPontoArticulacao(Vertice u, int tempo){

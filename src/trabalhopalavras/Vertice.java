@@ -20,6 +20,7 @@ public class Vertice{
     private Cor cor;
     private List<Vertice> adjacentes;
     private int compConex;
+    private int distancia;
 
     public String getNome() {
         return nome;
@@ -99,4 +100,14 @@ public class Vertice{
         }
         return verificaNome == 5;
     }
+
+    public int getDistancia() {
+        return distancia;
+    }
+
+    public void setDistancia(int distancia) {
+        this.distancia = distancia;
+    }
+    
+    
 }
