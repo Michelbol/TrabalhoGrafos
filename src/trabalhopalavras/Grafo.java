@@ -5,6 +5,7 @@
  */
 package trabalhopalavras;
 
+import java.util.ArrayList;
 import java.util.List;
 /**
  *
@@ -44,4 +45,28 @@ public class Grafo{
             v.setCompConex(0);
         }
     }
+    
+    public void addAresta(Aresta aresta){
+        List arestas = this.getAresta();
+        arestas.add(aresta);
+        this.setAresta(arestas);
+    }
+    public void addVertice(Vertice vertice){
+        List vertices = this.getVertice();
+        vertices.add(vertice);
+        this.setVertice(vertices);
+    }
+
+    public Grafo() {
+        List<Vertice> v = new ArrayList();
+        List<Aresta> a = new ArrayList();
+        this.setAresta(a);
+        this.setVertice(v);
+    }
+
+    @Override
+    public String toString() {
+        return "Grafo{" + "aresta=" + aresta + ", vertice=" + vertice + '}';
+    }
+    
 }

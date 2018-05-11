@@ -39,22 +39,22 @@ public class TrabalhoPalavras {
     // de repetição atingir o final do arquivo texto
           while (linha != null) {
             Vertice vertice = new Vertice();
-            List<Vertice> listaVertice = new ArrayList();
             vertice.setNome(linha);
-            listaVertice.add(vertice);  
+//              System.out.println("Linha: "+linha);
             for(Vertice v2 : grafo.getVertice()){
-                if(v2.verificaAdjavence(v2, vertice)){
-                    List adjacentesv2 = new ArrayList();
-                    List adjacentesVertice = new ArrayList();
-                    adjacentesv2.add(vertice);
-                    adjacentesVertice.add(v2);
-                    v2.setAdjacentes(adjacentesv2);
-                    vertice.setAdjacentes(adjacentesVertice);
+//                System.out.println("Comparo: "+vertice.getNome()+" com:" + v2.getNome());
+                if(v2.verificaAdjavence(vertice, v2)){
+                    v2.addAdjacente(vertice);
+                    vertice.addAdjacente(v2);
+                    Aresta aresta = new Aresta(vertice,v2);
+                    grafo.addAresta(aresta);
                 }
+//                System.out.println("Novo Vertice");
             }
+            grafo.addVertice(vertice);
             linha = lerArq.readLine(); // lê da segunda até a última linha
           }
-
+            System.out.println("Arestas: "+grafo.getAresta());
           arq.close();
         } catch (IOException e) {
             System.err.printf("Erro na abertura do arquivo: %s.\n",
