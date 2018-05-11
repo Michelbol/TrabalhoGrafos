@@ -60,16 +60,20 @@ public class Algoritmos {
         List<Vertice> filaVertice = new ArrayList();
         Vertice u;
         
+        g.initForBuscaLargura(s);
+        
         filaVertice.add(s);
-        while (filaVertice.size()!=0){
+        while (!filaVertice.isEmpty()){
             u = filaVertice.remove(0);
             
-            for (Vertice v : u.getAdjacentes()){
-                if (v.getCor().equals(Cor.Branco)){
-                    v.setCor(Cor.Cinza);
-                    v.setDistancia(u.getDistancia() + 1);
-                    v.setPredecessor(u);
-                    filaVertice.add(v);
+            for (Vertice v : g.getVertice()){
+                if(u.getAdjacentes().contains(v)){
+                    if (v.getCor().equals(Cor.Branco)){
+                        v.setCor(Cor.Cinza);
+                        v.setDistancia(u.getDistancia() + 1);
+                        v.setPredecessor(u);
+                        filaVertice.add(v);
+                    }
                 }
             }
             u.setCor(Cor.Preto);

@@ -44,4 +44,16 @@ public class Grafo{
             v.setCompConex(0);
         }
     }
+    
+    public void initForBuscaLargura(Vertice s){
+        for(Vertice v: this.vertice){
+            v.setCor(Cor.Branco);
+            v.setDistancia(-1);
+            v.setPredecessor(null);
+            if (v.equals(s)){
+                s.setCor(Cor.Cinza);
+                s.setDistancia(0);
+            }
+        }
+    }
 }
