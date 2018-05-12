@@ -60,8 +60,36 @@ public class Algoritmos {
         List<Vertice> filaVertice = new ArrayList();
         Vertice u;
         
+        g.initForBuscaLargura(s);
+        
         filaVertice.add(s);
-        while (filaVertice.size()!=0){
+        while (!filaVertice.isEmpty()){
+            u = filaVertice.remove(0);
+            
+            for (Vertice v : g.getVertice()){
+                if(u.getAdjacentes().contains(v)){
+                    if (v.getCor().equals(Cor.Branco)){
+                        v.setCor(Cor.Cinza);
+                        v.setDistancia(u.getDistancia() + 1);
+                        v.setPredecessor(u);
+                        filaVertice.add(v);
+                    }
+                }
+            }
+            u.setCor(Cor.Preto);
+        }
+    }
+    
+    public List<Vertice> getCaminho(Grafo g,Vertice origem,Vertice destino){
+        List<Vertice> filaVertice = new ArrayList();
+        List<Vertice> listaCaminho = new ArrayList();
+        Vertice u;
+        Vertice aux;
+        
+        g.initForBuscaLargura(origem);
+        
+        filaVertice.add(origem);
+        while (!filaVertice.isEmpty()){
             u = filaVertice.remove(0);
             
             for (Vertice v : u.getAdjacentes()){
@@ -71,9 +99,23 @@ public class Algoritmos {
                     v.setPredecessor(u);
                     filaVertice.add(v);
                 }
+                if (destino.equals(v)){
+                    filaVertice.clear();
+                    break;
+                }
             }
             u.setCor(Cor.Preto);
         }
+        if (destino.getDistancia()!=-1){
+            aux = destino;
+            while(!aux.equals(origem)){
+                listaCaminho.add(0, aux);
+                aux = aux.getPredecessor();
+            }
+            listaCaminho.add(0, origem);
+        }
+        
+        return listaCaminho;
     }
     
     public boolean isPontoArticulacao(Vertice u, int tempo){
