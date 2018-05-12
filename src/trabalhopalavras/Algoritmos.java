@@ -134,7 +134,7 @@ public class Algoritmos {
         u.setCor(Cor.Preto);
         tempo += 1;
         u.setFinalTmpDesc(tempo);
-        return true;
+        return false;
     }
     
     public static boolean isSegundoFilho(Vertice u, Vertice v){

@@ -23,14 +23,17 @@ public class TrabalhoPalavras {
     public static void main(String args[]){
         Grafo grafo;
         grafo = lerGrafo();
-        Algoritmos alg = new Algoritmos();
         int nroCompConexos = identificaCompConexos(grafo);
+        grafo.limpaGrafo(grafo);
         System.out.println("Nro Vertices: "+ grafo.getVertice().size());
         System.out.println("Nro Arestas: "+ grafo.getAresta().size());
-        System.out.println("Caminho de "+grafo.getVertice().get(2)+" até "+grafo.getVertice().get(6)+" é: "+ 
-                alg.getCaminho(grafo, grafo.getVertice().get(2), grafo.getVertice().get(151)));
+        System.out.println("Caminho de "+grafo.getVertice().get(2)+" até "+grafo.getVertice().get(151)+" é: "+ 
+                Algoritmos.getCaminho(grafo, grafo.getVertice().get(2), grafo.getVertice().get(151)));
+        grafo.limpaGrafo(grafo);
         System.out.println("Nro Componentes Conexos: "+ nroCompConexos);
+        grafo.limpaGrafo(grafo);
         System.out.println("As pontes são: "+ grafo.pontes(grafo));
+        grafo.limpaGrafo(grafo);
         System.out.println("Os pontos de Articulação são: "+ grafo.pontosDeArticulacao(grafo).size());
     }
     
