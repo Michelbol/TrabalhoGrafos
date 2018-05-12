@@ -80,4 +80,11 @@ public class Grafo{
             }
         }
     }
+    
+    public List<Vertice> pontes(Grafo g){
+        for(Vertice v : g.getVertice()){
+            
+        }
+        return null;
+    }
 }

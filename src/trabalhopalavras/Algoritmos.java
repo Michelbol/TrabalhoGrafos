@@ -14,7 +14,7 @@ import java.util.List;
 public class Algoritmos {
     
     
-    public boolean identificaCompConexos(Grafo g){
+    public static int identificaCompConexos(Grafo g){
         g.setAllVerticeBranco();
         int compConex = 0;
         for(Vertice vertice : g.getVertice()){
@@ -33,14 +33,11 @@ public class Algoritmos {
                     break;
                 }
             }
-            if(nroVertices == 1){
-                return false;
-            }
         }
-        return true;
+        return compConex;
     }
     
-    public void buscaEmProfundidadeConex(Vertice v, int compConex){
+    public static void buscaEmProfundidadeConex(Vertice v, int compConex){
         v.setCor(Cor.Cinza);
         v.setCompConex(compConex);
         for(Vertice vertice : v.getAdjacentes()){
@@ -51,12 +48,7 @@ public class Algoritmos {
         v.setCor(Cor.Preto);
     }
     
-    
-    public boolean buscaEmProfundidade(){
-        return true;
-    }
-    
-    public void buscaEmLargura(Grafo g,Vertice s){
+    public static void buscaEmLargura(Grafo g,Vertice s){
         List<Vertice> filaVertice = new ArrayList();
         Vertice u;
         
@@ -80,7 +72,7 @@ public class Algoritmos {
         }
     }
     
-    public List<Vertice> getCaminho(Grafo g,Vertice origem,Vertice destino){
+    public static List<Vertice> getCaminho(Grafo g,Vertice origem,Vertice destino){
         List<Vertice> filaVertice = new ArrayList();
         List<Vertice> listaCaminho = new ArrayList();
         Vertice u;
@@ -118,7 +110,7 @@ public class Algoritmos {
         return listaCaminho;
     }
     
-    public boolean isPontoArticulacao(Vertice u, int tempo){
+    public static boolean isPontoArticulacao(Vertice u, int tempo){
         tempo += 1;
         u.setCor(Cor.Cinza);
         u.setLow(tempo);
@@ -145,11 +137,11 @@ public class Algoritmos {
         return true;
     }
     
-    public boolean isSegundoFilho(Vertice u, Vertice v){
+    public static boolean isSegundoFilho(Vertice u, Vertice v){
         return u == v.getPredecessor().getPredecessor();
     }
     
-    public boolean isPonte(int tempo, Vertice v){
+    public static boolean isPonte(int tempo, Vertice v){
         tempo += 1;
         v.setCor(Cor.Cinza);
         v.setInitTmpDesc(tempo);

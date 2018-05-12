@@ -103,7 +103,7 @@ public class Vertice{
                 verificaNome += 1;
             }
         }
-        if(verificaNome == 4){
+        if(verificaNome >= 4){
 //            System.out.println("São adjacentes");
             return true;
         }
