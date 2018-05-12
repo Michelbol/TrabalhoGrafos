@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import static trabalhopalavras.Algoritmos.identificaCompConexos;
 /**
  *
  * @author miche
@@ -23,12 +24,14 @@ public class TrabalhoPalavras {
         Grafo grafo;
         grafo = lerGrafo();
         Algoritmos alg = new Algoritmos();
-        int nroCompConexos = alg.identificaCompConexos(grafo);
+        int nroCompConexos = identificaCompConexos(grafo);
         System.out.println("Nro Vertices: "+ grafo.getVertice().size());
         System.out.println("Nro Arestas: "+ grafo.getAresta().size());
-        System.out.println("Caminho de "+grafo.getVertice().get(2)+" até "+grafo.getVertice().get(6)+" é: "+ alg.getCaminho(grafo, grafo.getVertice().get(2), grafo.getVertice().get(151)));
+        System.out.println("Caminho de "+grafo.getVertice().get(2)+" até "+grafo.getVertice().get(6)+" é: "+ 
+                alg.getCaminho(grafo, grafo.getVertice().get(2), grafo.getVertice().get(151)));
         System.out.println("Nro Componentes Conexos: "+ nroCompConexos);
-        System.out.println("As pontes são: ");
+        System.out.println("As pontes são: "+ grafo.pontes(grafo));
+        System.out.println("Os pontos de Articulação são: "+ grafo.pontosDeArticulacao(grafo).size());
     }
     
     
