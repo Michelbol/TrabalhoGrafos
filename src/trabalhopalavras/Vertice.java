@@ -5,6 +5,7 @@
  */
 package trabalhopalavras;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -73,6 +74,8 @@ public class Vertice{
 
     public Vertice() {
         this.cor = Cor.Branco;
+        List<Vertice> adjacente = new ArrayList();
+        this.setAdjacentes(adjacente);
     }
 
     public Vertice getPredecessor() {
@@ -93,12 +96,19 @@ public class Vertice{
     
     public boolean verificaAdjavence(Vertice v1, Vertice v2){
         int verificaNome = 0;
+//        System.out.println("Comparando: " + v1.getNome()+" com:" + v2.getNome());
         for(int i = 0; i < 5; i++){
-            if(v1.getNome().indexOf(i) == v2.getNome().indexOf(i)){
+//            System.out.println("Comparando: " + v1.getNome().charAt(i)+" com:" + v2.getNome().charAt(i));
+            if(v1.getNome().charAt(i) == v2.getNome().charAt(i)){
                 verificaNome += 1;
             }
         }
-        return verificaNome == 5;
+        if(verificaNome >= 4){
+//            System.out.println("São adjacentes");
+            return true;
+        }
+//        System.out.println("Não são adjacentes");
+        return false;
     }
 
     public int getDistancia() {
@@ -108,6 +118,15 @@ public class Vertice{
     public void setDistancia(int distancia) {
         this.distancia = distancia;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Vertice{" + "nome=" + nome + '}';
+    }
+    public void addAdjacente(Vertice v){
+        List adjacente = this.getAdjacentes();
+        adjacente.add(v);
+        this.setAdjacentes(adjacente);
+    }
     
 }
