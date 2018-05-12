@@ -78,7 +78,7 @@ public class Algoritmos {
         Vertice u;
         Vertice aux;
         
-        g.initForBuscaLargura(origem);
+        g.initForBuscaLargura(origem);     
         
         filaVertice.add(origem);
         while (!filaVertice.isEmpty()){
@@ -90,15 +90,16 @@ public class Algoritmos {
                     v.setDistancia(u.getDistancia() + 1);
                     v.setPredecessor(u);
                     filaVertice.add(v);
-                }
-                if (destino.equals(v)){
+                }                                
+                if (destino.equals(v)){                    
                     filaVertice.clear();
                     break;
                 }
             }
             u.setCor(Cor.Preto);
         }
-        if (destino.getDistancia()!=-1){
+        
+        if (destino.getDistancia()!=Integer.MAX_VALUE){
             aux = destino;
             while(!aux.equals(origem)){
                 listaCaminho.add(0, aux);
