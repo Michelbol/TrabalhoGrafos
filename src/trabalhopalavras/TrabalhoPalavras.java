@@ -29,8 +29,8 @@ public class TrabalhoPalavras {
             /**/grafo.limpaGrafo(grafo);                                                                                                /**/
             /**/System.out.println("Nro Vertices: "+ grafo.getVertice().size());                                                        /**/
             /**/System.out.println("Nro Arestas: "+ grafo.getAresta().size());                                                          /**/
-            /**/System.out.println("Caminho de "+grafo.getVertice().get(3)+" até "+grafo.getVertice().get(154)+" é: "+                  /**/
-            /**/Algoritmos.getCaminho(grafo, grafo.getVertice().get(3), grafo.getVertice().get(154)));                                  /**/
+            /**/System.out.println("Caminho de "+grafo.getVertice().get(3)+" até "+grafo.getVertice().get(5)+" é: "+                  /**/
+            /**/Algoritmos.getCaminho(grafo, grafo.getVertice().get(3), grafo.getVertice().get(5)));                                  /**/
             /**/grafo.limpaGrafo(grafo);                                                                                                /**/
             /**/System.out.println("Nro Componentes Conexos: "+ nroCompConexos);                                                        /**/
             /**/grafo.limpaGrafo(grafo);                                                                                                /**/
