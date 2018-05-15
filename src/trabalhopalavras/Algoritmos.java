@@ -112,9 +112,9 @@ public class Algoritmos {
     
     public static boolean isPontoArticulacao(Vertice u, int tempo){
         tempo += 1;
-        u.setCor(Cor.Cinza);
-        u.setLow(tempo);
+        u.setCor(Cor.Cinza);        
         u.setInitTmpDesc(tempo);
+        u.setLow(u.getInitTmpDesc());
         
         for (Vertice v : u.getAdjacentes()){
             if (v.getCor().equals(Cor.Branco)){
@@ -124,10 +124,10 @@ public class Algoritmos {
                     if(isSegundoFilho(u,v)) return true;
                 } else {
                     u.setLow(Integer.min(u.getLow(),v.getLow()));
-                    if (v.getLow() >= u.getInitTmpDesc()) return true;
+                    if (v.getLow() >= u.getInitTmpDesc()) return true;                    
                 }
             } else {
-                if (v!=u.getPredecessor() && v.getInitTmpDesc() < u.getInitTmpDesc()) u.setLow(Integer.min(u.getLow(),v.getInitTmpDesc()));
+                if (v!=u.getPredecessor() && (v.getInitTmpDesc() < u.getInitTmpDesc())) u.setLow(Integer.min(u.getLow(),v.getInitTmpDesc()));
             }
         }
         
