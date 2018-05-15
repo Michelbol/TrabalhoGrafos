@@ -81,11 +81,12 @@ public class Grafo{
         }
     }
     
-    public List<Vertice> pontes(Grafo g){
-        List<Vertice> pontes = new ArrayList();
+    public List<Aresta> pontes(Grafo g){
+        List<Aresta> pontes = new ArrayList();
         for(Vertice v : g.getVertice()){
-            if(Algoritmos.isPonte(0, v)){
-                pontes.add(v);
+            Aresta a = Algoritmos.isPonte(0, v);
+            if(a != null){
+                pontes.add(a);
             }
         }
         return pontes;
@@ -95,7 +96,7 @@ public class Grafo{
         List<Vertice> pontosDeArticulacao = new ArrayList();
         for(Vertice v : g.getVertice()){
             limpaGrafo(g);
-            if(Algoritmos.isPontoArticulacao(v, 0)!=null){
+            if(Algoritmos.isPontoArticulacao(v, 0)){
                 pontosDeArticulacao.add(v);
             }
         }
