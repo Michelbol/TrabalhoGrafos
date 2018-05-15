@@ -72,7 +72,7 @@ public class Grafo{
     public void initForBuscaLargura(Vertice s){
         for(Vertice v: this.vertice){
             v.setCor(Cor.Branco);
-            v.setDistancia(-1);
+            v.setDistancia(Integer.MAX_VALUE);
             v.setPredecessor(null);
             if (v.equals(s)){
                 s.setCor(Cor.Cinza);

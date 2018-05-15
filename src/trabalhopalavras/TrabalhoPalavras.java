@@ -22,26 +22,32 @@ public class TrabalhoPalavras {
     
     public static void main(String args[]){
         Grafo grafo;
-        grafo = lerGrafo();
-        int nroCompConexos = identificaCompConexos(grafo);
-        grafo.limpaGrafo(grafo);
-        System.out.println("Nro Vertices: "+ grafo.getVertice().size());
-        System.out.println("Nro Arestas: "+ grafo.getAresta().size());
-        System.out.println("Caminho de "+grafo.getVertice().get(2)+" até "+grafo.getVertice().get(151)+" é: "+ 
-                Algoritmos.getCaminho(grafo, grafo.getVertice().get(2), grafo.getVertice().get(151)));
-        grafo.limpaGrafo(grafo);
-        System.out.println("Nro Componentes Conexos: "+ nroCompConexos);
-        grafo.limpaGrafo(grafo);
-        System.out.println("As pontes são: "+ grafo.pontes(grafo));
-        grafo.limpaGrafo(grafo);
-        System.out.println("Os pontos de Articulação são: "+ grafo.pontosDeArticulacao(grafo).size());
+        try{
+            //=======================================Exemplo 1============================================================================//
+            /**/grafo = lerGrafo(new File(".").getCanonicalPath()+"\\src\\TrabalhoPalavras\\sgb-words.txt");                            /**/
+            /**/int nroCompConexos = identificaCompConexos(grafo);                                                                      /**/
+            /**/grafo.limpaGrafo(grafo);                                                                                                /**/
+            /**/System.out.println("Nro Vertices: "+ grafo.getVertice().size());                                                        /**/
+            /**/System.out.println("Nro Arestas: "+ grafo.getAresta().size());                                                          /**/
+            /**/System.out.println("Caminho de "+grafo.getVertice().get(3)+" até "+grafo.getVertice().get(5)+" é: "+                  /**/
+            /**/Algoritmos.getCaminho(grafo, grafo.getVertice().get(3), grafo.getVertice().get(5)));                                  /**/
+            /**/grafo.limpaGrafo(grafo);                                                                                                /**/
+            /**/System.out.println("Nro Componentes Conexos: "+ nroCompConexos);                                                        /**/
+            /**/grafo.limpaGrafo(grafo);                                                                                                /**/
+            /**/System.out.println("As pontes são: "+ grafo.pontes(grafo));                                                             /**/
+            /**/grafo.limpaGrafo(grafo);                                                                                                /**/
+            /**/System.out.println("Os pontos de Articulação são: "+ grafo.pontosDeArticulacao(grafo).size());                          /**/
+            //=======================================Exemplo 1============================================================================//
+        }catch(Exception e){
+            System.out.println("Exception: "+ e);
+        }
     }
     
     
-    public static Grafo lerGrafo(){
+    public static Grafo lerGrafo(String path){
         try {
             Grafo grafo = new Grafo();
-            FileReader arq = new FileReader(new File(".").getCanonicalPath()+"\\src\\TrabalhoPalavras\\sgb-words.txt");
+            FileReader arq = new FileReader(path);
             BufferedReader lerArq = new BufferedReader(arq);
 
             String linha = lerArq.readLine();
