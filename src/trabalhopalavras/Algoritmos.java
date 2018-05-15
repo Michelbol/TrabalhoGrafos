@@ -48,30 +48,6 @@ public class Algoritmos {
         v.setCor(Cor.Preto);
     }
     
-    public static void buscaEmLargura(Grafo g,Vertice s){
-        List<Vertice> filaVertice = new ArrayList();
-        Vertice u;
-        
-        g.initForBuscaLargura(s);
-        
-        filaVertice.add(s);
-        while (!filaVertice.isEmpty()){
-            u = filaVertice.remove(0);
-            
-            for (Vertice v : g.getVertice()){
-                if(u.getAdjacentes().contains(v)){
-                    if (v.getCor().equals(Cor.Branco)){
-                        v.setCor(Cor.Cinza);
-                        v.setDistancia(u.getDistancia() + 1);
-                        v.setPredecessor(u);
-                        filaVertice.add(v);
-                    }
-                }
-            }
-            u.setCor(Cor.Preto);
-        }
-    }
-    
     public static List<Vertice> getCaminho(Grafo g,Vertice origem,Vertice destino){
         List<Vertice> filaVertice = new ArrayList();
         List<Vertice> listaCaminho = new ArrayList();
@@ -110,7 +86,7 @@ public class Algoritmos {
         return listaCaminho;
     }
     
-    public static boolean isPontoArticulacao(Vertice u, int tempo){
+    public static Aresta isPontoArticulacao(Vertice u, int tempo){
         tempo += 1;
         u.setCor(Cor.Cinza);        
         u.setInitTmpDesc(tempo);
@@ -121,10 +97,16 @@ public class Algoritmos {
                 v.setPredecessor(u);
                 isPontoArticulacao(v,tempo);
                 if (u.getPredecessor()==null){
-                    if(isSegundoFilho(u,v)) return true;
+                    if(isSegundoFilho(u,v)){
+                        Aresta a = new Aresta(u,v); 
+                        return a;
+                    }
                 } else {
-                    u.setLow(Integer.min(u.getLow(),v.getLow()));
-                    if (v.getLow() >= u.getInitTmpDesc()) return true;                    
+                    u.setLow(Integer.min(u.getLow(),v.getLow()));                 
+                    if (v.getLow() >= u.getInitTmpDesc()){
+                        Aresta a = new Aresta(u,v); 
+                        return a;
+                    };
                 }
             } else {
                 if (v!=u.getPredecessor() && (v.getInitTmpDesc() < u.getInitTmpDesc())) u.setLow(Integer.min(u.getLow(),v.getInitTmpDesc()));
@@ -134,7 +116,7 @@ public class Algoritmos {
         u.setCor(Cor.Preto);
         tempo += 1;
         u.setFinalTmpDesc(tempo);
-        return false;
+        return null;
     }
     
     public static boolean isSegundoFilho(Vertice u, Vertice v){

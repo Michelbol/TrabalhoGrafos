@@ -95,7 +95,7 @@ public class Grafo{
         List<Vertice> pontosDeArticulacao = new ArrayList();
         for(Vertice v : g.getVertice()){
             limpaGrafo(g);
-            if(Algoritmos.isPontoArticulacao(v, 0)){
+            if(Algoritmos.isPontoArticulacao(v, 0)!=null){
                 pontosDeArticulacao.add(v);
             }
         }
