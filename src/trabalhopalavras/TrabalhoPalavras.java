@@ -69,4 +69,36 @@ public class TrabalhoPalavras {
             return null;
         }
     }
+    
+    public static Grafo exemplo1(){
+        try {
+            Grafo grafo = new Grafo();
+            FileReader arq = new FileReader(new File(".").getCanonicalPath()+"\\src\\TrabalhoPalavras\\exemplo1.txt");
+            BufferedReader lerArq = new BufferedReader(arq);
+
+            String linha = lerArq.readLine();
+            
+            while (linha != null) {
+            Vertice vertice = new Vertice();
+            vertice.setNome(linha);
+
+            for(Vertice v2 : grafo.getVertice()){
+                if(v2.verificaAdjavence(vertice, v2)){
+                    v2.addAdjacente(vertice);
+                    vertice.addAdjacente(v2);
+                    Aresta aresta = new Aresta(vertice,v2);
+                    grafo.addAresta(aresta);
+                }
+            }
+            grafo.addVertice(vertice);
+            linha = lerArq.readLine();
+            }
+            arq.close();
+            return grafo;
+        } catch (IOException e) {
+            System.err.printf("Erro na abertura do arquivo: %s.\n",
+            e.getMessage());
+            return null;
+        }
+    }
 }
