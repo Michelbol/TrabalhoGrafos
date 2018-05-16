@@ -86,7 +86,7 @@ public class Algoritmos {
         return listaCaminho;
     }
     
-    public static boolean isPontoArticulacao(Vertice u, int tempo){
+    public static void isPontoArticulacao(Vertice u, int tempo){
         tempo += 1;
         u.setCor(Cor.Cinza);        
         u.setInitTmpDesc(tempo);
@@ -96,25 +96,20 @@ public class Algoritmos {
             if (v.getCor().equals(Cor.Branco)){
                 v.setPredecessor(u);
                 isPontoArticulacao(v,tempo);
-                if (u.getPredecessor()==null){
-                    if(isSegundoFilho(u,v)) return true;
-                } else {
+                if (u.getPredecessor()==null && isSegundoFilho(u,v)) u.setIsPontoArticulacao(true);               
+                else {
                     u.setLow(Integer.min(u.getLow(),v.getLow()));
-                    if (v.getLow() >= u.getInitTmpDesc()) return true;
+                    if (v.getLow() >= u.getInitTmpDesc()) u.setIsPontoArticulacao(true);
                 }
-            } else {
-                if (v!=u.getPredecessor() && (v.getInitTmpDesc() < u.getInitTmpDesc())) u.setLow(Integer.min(u.getLow(),v.getInitTmpDesc()));
-            }
-        }
-        
+            } else if (v!=u.getPredecessor() && (v.getInitTmpDesc() < u.getInitTmpDesc())) u.setLow(Integer.min(u.getLow(),v.getInitTmpDesc()));
+        }     
         u.setCor(Cor.Preto);
         tempo += 1;
         u.setFinalTmpDesc(tempo);
-        return false;
     }
     
     public static boolean isSegundoFilho(Vertice u, Vertice v){
-        return u == v.getPredecessor().getPredecessor();
+        return u.equals(v.getPredecessor().getPredecessor());
     }
     
     public static Aresta isPonte(int tempo, Vertice v){

@@ -94,9 +94,15 @@ public class Grafo{
     
     public List<Vertice> pontosDeArticulacao(Grafo g){
         List<Vertice> pontosDeArticulacao = new ArrayList();
+        //limpaGrafo(g);
+        
         for(Vertice v : g.getVertice()){
-            limpaGrafo(g);
-            if(Algoritmos.isPontoArticulacao(v, 0)){
+            limpaGrafo(g);          
+            Algoritmos.isPontoArticulacao(v, 0);
+        }
+        for(Vertice v : g.getVertice()){
+            
+            if(v.isIsPontoArticulacao()){
                 pontosDeArticulacao.add(v);
             }
         }
@@ -111,6 +117,8 @@ public class Grafo{
             v.setCor(Cor.Branco);
             v.setCompConex(0);
             v.setDistancia(0);
+            v.setPredecessor(null);
+            v.setIsPontoArticulacao(false);
         }
         return g;
     }

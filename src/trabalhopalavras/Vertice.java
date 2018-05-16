@@ -22,6 +22,7 @@ public class Vertice{
     private List<Vertice> adjacentes;
     private int compConex;
     private int distancia;
+    private boolean isPontoArticulacao;
 
     public String getNome() {
         return nome;
@@ -128,5 +129,15 @@ public class Vertice{
         adjacente.add(v);
         this.setAdjacentes(adjacente);
     }
+
+    public boolean isIsPontoArticulacao() {
+        return isPontoArticulacao;
+    }
+
+    public void setIsPontoArticulacao(boolean isPontoArticulacao) {
+        this.isPontoArticulacao = isPontoArticulacao;
+    }
+    
+    
     
 }
