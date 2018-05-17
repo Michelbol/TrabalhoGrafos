@@ -12,7 +12,7 @@ import java.util.List;
  * @author miche
  */
 public class Algoritmos {
-    
+    static List<Aresta> pontes = new ArrayList();
     
     public static int identificaCompConexos(Grafo g){
         g.setAllVerticeBranco();
@@ -96,12 +96,20 @@ public class Algoritmos {
             if (v.getCor().equals(Cor.Branco)){
                 v.setPredecessor(u);
                 isPontoArticulacao(v,tempo);
-                if (u.getPredecessor()==null && isSegundoFilho(u,v)) u.setIsPontoArticulacao(true);               
+                if (u.getPredecessor()==null){
+                    if(isSegundoFilho(u,v)){
+                        u.setIsPontoArticulacao(true);
+                    }
+                }               
                 else {
                     u.setLow(Integer.min(u.getLow(),v.getLow()));
-                    if (v.getLow() >= u.getInitTmpDesc()) u.setIsPontoArticulacao(true);
+                    if (v.getLow() >= u.getInitTmpDesc()){
+                        u.setIsPontoArticulacao(true);
+                    }
                 }
-            } else if (v!=u.getPredecessor() && (v.getInitTmpDesc() < u.getInitTmpDesc())) u.setLow(Integer.min(u.getLow(),v.getInitTmpDesc()));
+            } else if ((v!=u.getPredecessor()) && (v.getInitTmpDesc() < u.getInitTmpDesc())){
+                u.setLow(Integer.min(u.getLow(),v.getInitTmpDesc()));
+            }
         }     
         u.setCor(Cor.Preto);
         tempo += 1;
@@ -111,8 +119,7 @@ public class Algoritmos {
     public static boolean isSegundoFilho(Vertice u, Vertice v){
         return u.equals(v.getPredecessor().getPredecessor());
     }
-    
-    public static Aresta isPonte(int tempo, Vertice v){
+    public static void isPonte(int tempo, Vertice v){
         tempo += 1;
         v.setCor(Cor.Cinza);
         v.setInitTmpDesc(tempo);
@@ -124,7 +131,7 @@ public class Algoritmos {
                 v.setLow(Integer.min(v.getLow(), verticeAdjacente.getLow()));
                 if(verticeAdjacente.getLow() > v.getInitTmpDesc()){
                     Aresta a = new Aresta(verticeAdjacente, v);
-                    return a;
+                    pontes.add(a);
                 }else{
                     if((verticeAdjacente != v.getPredecessor()) && (verticeAdjacente.getInitTmpDesc() < v.getInitTmpDesc())){
                        v.setLow(Integer.min(v.getLow(), verticeAdjacente.getInitTmpDesc()));
@@ -135,6 +142,5 @@ public class Algoritmos {
         v.setCor(Cor.Preto);
         tempo += 1;
         v.setFinalTmpDesc(tempo);
-        return null;
     }
 }
