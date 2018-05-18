@@ -63,6 +63,27 @@ public class TrabalhoPalavras {
         }catch(Exception e){
             System.out.println("Exception: "+ e);
         }
+        
+        try{
+            //=======================================Exemplo 2============================================================================//
+            /**/grafo = lerGrafo(new File(".").getCanonicalPath()+"\\src\\TrabalhoPalavras\\exemplo2.txt");                            /**/
+            /**/int nroCompConexos = identificaCompConexos(grafo);                                                                      /**/
+            /**/grafo.limpaGrafo(grafo);         
+            /**/System.out.println("Exemplo 2:");
+            /**/System.out.println("Nro Vertices: "+ grafo.getVertice().size());                                                        /**/
+            /**/System.out.println("Nro Arestas: "+ grafo.getAresta().size());
+            /**/System.out.println("Caminho de "+grafo.getVertice().get(2)+" até "+grafo.getVertice().get(7)+" é: "+                    /**/
+            /**/Algoritmos.getCaminho(grafo, grafo.getVertice().get(3), grafo.getVertice().get(5)));                                    /**/
+            /**/grafo.limpaGrafo(grafo);                                                                                                /**/
+            /**/System.out.println("Nro Componentes Conexos: "+ nroCompConexos);                                                        /**/
+            /**/grafo.limpaGrafo(grafo);                                                                                                /**/
+            /**/System.out.println("As pontes são: "+ grafo.pontes(grafo));                                                             /**/
+            /**/grafo.limpaGrafo(grafo);                                                                                                /**/
+            /**/System.out.println("Os pontos de Articulação são: "+ grafo.pontosDeArticulacao(grafo).size());                          /**/
+            //=======================================Exemplo 1============================================================================//
+        }catch(Exception e){
+            System.out.println("Exception: "+ e);
+        }
     }
     
     
