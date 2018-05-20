@@ -29,8 +29,8 @@ public class TrabalhoPalavras {
             /**/grafo.limpaGrafo(grafo);                                                                                                /**/
             /**/System.out.println("Nro Vertices: "+ grafo.getVertice().size());                                                        /**/
             /**/System.out.println("Nro Arestas: "+ grafo.getAresta().size());                                                          /**/
-            /**/System.out.println("Caminho de "+grafo.getVertice().get(3)+" até "+grafo.getVertice().get(5)+" é: "+                  /**/
-            /**/Algoritmos.getCaminho(grafo, grafo.getVertice().get(3), grafo.getVertice().get(5)));                                  /**/
+            /**/System.out.println("Caminho de "+grafo.getVertice().get(3)+" até "+grafo.getVertice().get(5)+" é: "+                    /**/
+            /**/Algoritmos.getCaminho(grafo, grafo.getVertice().get(3), grafo.getVertice().get(5)));                                    /**/
             /**/grafo.limpaGrafo(grafo);                                                                                                /**/
             /**/System.out.println("Nro Componentes Conexos: "+ nroCompConexos);                                                        /**/
             /**/grafo.limpaGrafo(grafo);                                                                                                /**/
@@ -44,21 +44,21 @@ public class TrabalhoPalavras {
         
         try{
             //=======================================Exemplo 1============================================================================//
-            /**/grafo = lerGrafo(new File(".").getCanonicalPath()+"\\src\\TrabalhoPalavras\\exemplo1.txt");                            /**/
+            /**/grafo = lerGrafo(new File(".").getCanonicalPath()+"\\src\\TrabalhoPalavras\\exemplo1.txt");                             /**/
             /**/int nroCompConexos = identificaCompConexos(grafo);                                                                      /**/
-            /**/grafo.limpaGrafo(grafo);         
-            /**/System.out.println("Exemplo 1:");
+            /**/grafo.limpaGrafo(grafo);                                                                                                /**/
+            /**/System.out.println("Exemplo 1:");                                                                                       /**/
             /**/System.out.println("Nro Vertices: "+ grafo.getVertice().size());                                                        /**/
-            /**/System.out.println("Nro Arestas: "+ grafo.getAresta().size());
-            /**/System.out.println("Caminho de "+grafo.getVertice().get(3)+" até "+grafo.getVertice().get(5)+" é: "+                  /**/
-            /**/Algoritmos.getCaminho(grafo, grafo.getVertice().get(3), grafo.getVertice().get(5)));                                  /**/
+            /**/System.out.println("Nro Arestas: "+ grafo.getAresta().size());                                                          /**/
+            /**/System.out.println("Caminho de "+grafo.getVertice().get(3)+" até "+grafo.getVertice().get(5)+" é: "+                    /**/
+            /**/Algoritmos.getCaminho(grafo, grafo.getVertice().get(3), grafo.getVertice().get(5)));                                    /**/
             /**/grafo.limpaGrafo(grafo);                                                                                                /**/
             /**/System.out.println("Nro Componentes Conexos: "+ nroCompConexos);                                                        /**/
             /**/grafo.limpaGrafo(grafo);                                                                                                /**/
             /**/System.out.println("As pontes são: "+ grafo.pontes(grafo));                                                             /**/
             /**/grafo.limpaGrafo(grafo);                                                                                                /**/
             /**/System.out.println("Os pontos de Articulação são: "+ grafo.pontosDeArticulacao(grafo).size());                          /**/
-            /**/System.out.println("Os pontos de Articulação são: "+ grafo.pontosDeArticulacao(grafo).toString());                          /**/
+            /**/System.out.println("Os pontos de Articulação são: "+ grafo.pontosDeArticulacao(grafo).toString());                      /**/
             //=======================================Exemplo 1============================================================================//
         }catch(Exception e){
             System.out.println("Exception: "+ e);
@@ -66,14 +66,14 @@ public class TrabalhoPalavras {
         
         try{
             //=======================================Exemplo 3============================================================================//
-            /**/grafo = lerGrafo(new File(".").getCanonicalPath()+"\\src\\TrabalhoPalavras\\exemplo3.txt");                            /**/
+            /**/grafo = lerGrafo(new File(".").getCanonicalPath()+"\\src\\TrabalhoPalavras\\exemplo3.txt");                             /**/
             /**/int nroCompConexos = identificaCompConexos(grafo);                                                                      /**/
-            /**/grafo.limpaGrafo(grafo);         
-            /**/System.out.println("Exemplo 3:");
+            /**/grafo.limpaGrafo(grafo);                                                                                                /**/
+            /**/System.out.println("Exemplo 3:");                                                                                       /**/
             /**/System.out.println("Nro Vertices: "+ grafo.getVertice().size());                                                        /**/
-            /**/System.out.println("Nro Arestas: "+ grafo.getAresta().size());
-            /**/System.out.println("Caminho de "+grafo.getVertice().get(191)+" até "+grafo.getVertice().get(33)+" é: "+                  /**/
-            /**/Algoritmos.getCaminho(grafo, grafo.getVertice().get(191), grafo.getVertice().get(33)));                                  /**/
+            /**/System.out.println("Nro Arestas: "+ grafo.getAresta().size());                                                          /**/
+            /**/System.out.println("Caminho de "+grafo.getVertice().get(191)+" até "+grafo.getVertice().get(33)+" é: "+                 /**/
+            /**/Algoritmos.getCaminho(grafo, grafo.getVertice().get(191), grafo.getVertice().get(33)));                                 /**/
             /**/grafo.limpaGrafo(grafo);                                                                                                /**/
             /**/System.out.println("Nro Componentes Conexos: "+ nroCompConexos);                                                        /**/
             /**/grafo.limpaGrafo(grafo);                                                                                                /**/
