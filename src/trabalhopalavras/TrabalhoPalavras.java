@@ -41,7 +41,7 @@ public class TrabalhoPalavras {
         }catch(Exception e){
             System.out.println("Exception: "+ e);
         }
-        
+        System.out.println("=============================================================================================================");
         try{
             //=======================================Exemplo 1============================================================================//
             /**/grafo = lerGrafo(new File(".").getCanonicalPath()+"\\src\\TrabalhoPalavras\\exemplo1.txt");                             /**/
@@ -63,7 +63,28 @@ public class TrabalhoPalavras {
         }catch(Exception e){
             System.out.println("Exception: "+ e);
         }
-        
+        System.out.println("=============================================================================================================");
+        try{
+            //=======================================Exemplo 2============================================================================//
+            /**/grafo = lerGrafo(new File(".").getCanonicalPath()+"\\src\\TrabalhoPalavras\\exemplo2.txt");                             /**/
+            /**/int nroCompConexos = identificaCompConexos(grafo);                                                                      /**/
+            /**/grafo.limpaGrafo(grafo);                                                                                                /**/
+            /**/System.out.println("Exemplo 2:");                                                                                       /**/
+            /**/System.out.println("Nro Vertices: "+ grafo.getVertice().size());                                                        /**/
+            /**/System.out.println("Nro Arestas: "+ grafo.getAresta().size());                                                          /**/
+            /**/System.out.println("Caminho de "+grafo.getVertice().get(1)+" até "+grafo.getVertice().get(26)+" é: "+                 /**/
+            /**/Algoritmos.getCaminho(grafo, grafo.getVertice().get(1), grafo.getVertice().get(26)));                                 /**/
+            /**/grafo.limpaGrafo(grafo);                                                                                                /**/
+            /**/System.out.println("Nro Componentes Conexos: "+ nroCompConexos);                                                        /**/
+            /**/grafo.limpaGrafo(grafo);                                                                                                /**/
+            /**/System.out.println("As pontes são: "+ grafo.pontes(grafo));                                                             /**/
+            /**/grafo.limpaGrafo(grafo);                                                                                                /**/
+            /**/System.out.println("Os pontos de Articulação são: "+ grafo.pontosDeArticulacao(grafo).size());                          /**/
+            //=======================================Exemplo 2============================================================================//
+        }catch(Exception e){
+            System.out.println("Exception: "+ e);
+        }
+        System.out.println("=============================================================================================================");
         try{
             //=======================================Exemplo 3============================================================================//
             /**/grafo = lerGrafo(new File(".").getCanonicalPath()+"\\src\\TrabalhoPalavras\\exemplo3.txt");                             /**/
@@ -80,7 +101,7 @@ public class TrabalhoPalavras {
             /**/System.out.println("As pontes são: "+ grafo.pontes(grafo));                                                             /**/
             /**/grafo.limpaGrafo(grafo);                                                                                                /**/
             /**/System.out.println("Os pontos de Articulação são: "+ grafo.pontosDeArticulacao(grafo).size());                          /**/
-            //=======================================Exemplo 1============================================================================//
+            //=======================================Exemplo 3============================================================================//
         }catch(Exception e){
             System.out.println("Exception: "+ e);
         }
@@ -91,38 +112,6 @@ public class TrabalhoPalavras {
         try {
             Grafo grafo = new Grafo();
             FileReader arq = new FileReader(path);
-            BufferedReader lerArq = new BufferedReader(arq);
-
-            String linha = lerArq.readLine();
-            
-            while (linha != null) {
-            Vertice vertice = new Vertice();
-            vertice.setNome(linha);
-
-            for(Vertice v2 : grafo.getVertice()){
-                if(v2.verificaAdjavence(vertice, v2)){
-                    v2.addAdjacente(vertice);
-                    vertice.addAdjacente(v2);
-                    Aresta aresta = new Aresta(vertice,v2);
-                    grafo.addAresta(aresta);
-                }
-            }
-            grafo.addVertice(vertice);
-            linha = lerArq.readLine();
-            }
-            arq.close();
-            return grafo;
-        } catch (IOException e) {
-            System.err.printf("Erro na abertura do arquivo: %s.\n",
-            e.getMessage());
-            return null;
-        }
-    }
-    
-    public static Grafo exemplo1(){
-        try {
-            Grafo grafo = new Grafo();
-            FileReader arq = new FileReader(new File(".").getCanonicalPath()+"\\src\\TrabalhoPalavras\\exemplo1.txt");
             BufferedReader lerArq = new BufferedReader(arq);
 
             String linha = lerArq.readLine();
